@@ -42,3 +42,16 @@ model Product {
   name      String?
   price     Float?
 }
+
+enum Level {
+  Info
+  Warn
+  Error
+}
+
+model Log {
+  id      String @id @default(dbgenerated("gen_random_uuid()"))
+  level   Level
+  message String
+  meta    Json
+}
