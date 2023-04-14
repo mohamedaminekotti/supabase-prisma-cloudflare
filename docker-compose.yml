@@ -359,3 +359,5 @@ services:
       PG_META_DB_PASSWORD: ${POSTGRESQL_PASSWORD}
 volumes:
   postgres: ~
+
+
