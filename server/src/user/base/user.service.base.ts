@@ -40,7 +40,14 @@ export class UserServiceBase {
   async findOne<T extends Prisma.UserFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserFindUniqueArgs>
   ): Promise<User | null> {
-    return await this.prisma.user.findUnique(args);
+    try{  
+    const test =  await this.prisma.user.findUnique(args);
+    console.log('-----------test-----', test);
+    return test;
+    }catch(error){
+      console.log(error);
+      return null;
+    }
   }
   async create<T extends Prisma.UserCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserCreateArgs>
