@@ -77,7 +77,7 @@ services:
       - ./server/prisma:/app/prisma
       - ./server/scripts:/app/scripts
     environment:
-      POSTGRESQL_URL: "postgres://${CLIENT_POSTGRESQL_USER}:${CLIENT_POSTGRESQL_PASSWORD}@db"
+      POSTGRESQL_URL: "postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres"
       BCRYPT_SALT: "${BCRYPT_SALT}"
       KONG_URL: http://kong:8000
       ANON_KEY: ${ANON_KEY}
@@ -136,13 +136,13 @@ services:
       - ./server/scripts:/app/scripts
       # - ./server/prisma/schema.prisma:/app/prisma/schema.prisma
     environment:
-      POSTGRESQL_URL: "postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@db"
+      POSTGRESQL_URL: "postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres"
       BCRYPT_SALT: "${BCRYPT_SALT}"
       KONG_URL: http://kong:8000
       ANON_KEY: ${ANON_KEY}
       SERVICE_ROLE_KEY: ${SERVICE_ROLE_KEY}
     depends_on:
-      - db
+      # - db
       - kong
     
   migrate-prod:
@@ -235,7 +235,7 @@ services:
       GOTRUE_API_PORT: 9999
 
       GOTRUE_DB_DRIVER: postgres
-      GOTRUE_DB_DATABASE_URL: postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@db/postgres?search_path=auth
+      GOTRUE_DB_DATABASE_URL: postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres?search_path=auth
 
       API_EXTERNAL_URL: ${API_URL}
       GOTRUE_SITE_URL: ${SITE_URL}/callback
@@ -294,7 +294,7 @@ services:
       - db
     restart: unless-stopped
     environment:
-      PGRST_DB_URI: postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@db/postgres
+      PGRST_DB_URI: postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres
       PGRST_DB_SCHEMA: public
       PGRST_DB_ANON_ROLE: postgres
       PGRST_JWT_SECRET: ${JWT_SECRET}
@@ -335,7 +335,7 @@ services:
       SERVICE_KEY: ${SERVICE_ROLE_KEY}
       POSTGREST_URL: http://rest:3000
       PGRST_JWT_SECRET: ${JWT_SECRET}
-      DATABASE_URL: postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@db/postgres
+      DATABASE_URL: postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres
       PGOPTIONS: -c search_path=storage,public
       FILE_SIZE_LIMIT: 52428800
       STORAGE_BACKEND: file
