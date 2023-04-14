@@ -1,6 +1,6 @@
 datasource postgres {
   provider = "postgresql"
-  url      = "prisma://aws-us-east-1.prisma-data.com/?api_key=xTmyEi4zxQPwd7W0GP7E-4XRpJVaeZCyFsSQi39nvk3Wiv3dZynVTf0bG8F-IsM1"
+  url      = "postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres"
 }
 
 generator client {
