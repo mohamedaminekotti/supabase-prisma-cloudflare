@@ -77,7 +77,7 @@ services:
       - ./server/prisma:/app/prisma
       - ./server/scripts:/app/scripts
     environment:
-      POSTGRESQL_URL: "postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres"
+      POSTGRESQL_URL: "prisma://aws-us-east-1.prisma-data.com/?api_key=xTmyEi4zxQPwd7W0GP7E-4XRpJVaeZCyFsSQi39nvk3Wiv3dZynVTf0bG8F-IsM1"
       BCRYPT_SALT: "${BCRYPT_SALT}"
       KONG_URL: http://kong:8000
       ANON_KEY: ${ANON_KEY}
@@ -136,7 +136,7 @@ services:
       - ./server/scripts:/app/scripts
       # - ./server/prisma/schema.prisma:/app/prisma/schema.prisma
     environment:
-      POSTGRESQL_URL: "postgres://postgres:amine123AMINE@db.qmbggtljiirxehtayiqu.supabase.co:5432/postgres"
+      POSTGRESQL_URL: "prisma://aws-us-east-1.prisma-data.com/?api_key=xTmyEi4zxQPwd7W0GP7E-4XRpJVaeZCyFsSQi39nvk3Wiv3dZynVTf0bG8F-IsM1"
       BCRYPT_SALT: "${BCRYPT_SALT}"
       KONG_URL: http://kong:8000
       ANON_KEY: ${ANON_KEY}

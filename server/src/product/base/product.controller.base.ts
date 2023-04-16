@@ -33,6 +33,7 @@ import { ProductupdateManyArgs } from "./ProductupdateManyArgs";
 import { ProductUpdateInput } from "./ProductUpdateInput";
 import { Product } from "./Product";
 import { getListProductDto } from "./getListProduct.dto";
+import { PrismaClient } from "@prisma/client";
 @swagger.ApiBearerAuth()
 export class ProductControllerBase {
   constructor(
@@ -40,42 +41,44 @@ export class ProductControllerBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
-  @common.UseInterceptors(nestMorgan.MorganInterceptor("combined"))
-  @common.UseGuards(
-    defaultAuthGuard.DefaultAuthGuard,
-    nestAccessControl.ACGuard
-  )
+  // @common.UseInterceptors(nestMorgan.MorganInterceptor("combined"))
+  // @common.UseGuards(
+  //   defaultAuthGuard.DefaultAuthGuard,
+  //   nestAccessControl.ACGuard
+  // )
   @common.Post()
-  @nestAccessControl.UseRoles({
-    resource: "Product",
-    action: "create",
-    possession: "any",
-  })
-  @swagger.ApiCreatedResponse({ type: Product })
-  @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
+  // @nestAccessControl.UseRoles({
+  //   resource: "Product",
+  //   action: "create",
+  //   possession: "any",
+  // })
+  // @swagger.ApiCreatedResponse({ type: Product })
+  // @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(
     @common.Body() data: ProductCreateInput,
-    @nestAccessControl.UserRoles() userRoles: string[]
+    // @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<Product> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "create",
-      possession: "any",
-      resource: "Product",
-    });
-    const invalidAttributes = abacUtil.getInvalidAttributes(permission, data);
-    if (invalidAttributes.length) {
-      const properties = invalidAttributes
-        .map((attribute: string) => JSON.stringify(attribute))
-        .join(", ");
-      const roles = userRoles
-        .map((role: string) => JSON.stringify(role))
-        .join(",");
-      throw new errors.ForbiddenException(
-        `providing the properties: ${properties} on ${"Product"} creation is forbidden for roles: ${roles}`
-      );
-    }
-    return await this.service.create({
+    // const permission = this.rolesBuilder.permission({
+    //   role: userRoles,
+    //   action: "create",
+    //   possession: "any",
+    //   resource: "Product",
+    // });
+    // const invalidAttributes = abacUtil.getInvalidAttributes(permission, data);
+    // if (invalidAttributes.length) {
+    //   const properties = invalidAttributes
+    //     .map((attribute: string) => JSON.stringify(attribute))
+    //     .join(", ");
+    //   const roles = userRoles
+    //     .map((role: string) => JSON.stringify(role))
+    //     .join(",");
+    //   throw new errors.ForbiddenException(
+    //     `providing the properties: ${properties} on ${"Product"} creation is forbidden for roles: ${roles}`
+    //   );
+    // }
+    const prismaClient = new PrismaClient();
+
+    return await prismaClient.product.create({
       data: data,
       select: {
         id: true,

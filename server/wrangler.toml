@@ -1,0 +1,8 @@
+name = "server"
+main = "src/index.ts"
+compatibility_date = "2023-04-14"
+
+[vars]
+DATABASE_URL = "prisma://aws-us-east-1.prisma-data.com/?api_key=xTmyEi4zxQPwd7W0GP7E-4XRpJVaeZCyFsSQi39nvk3Wiv3dZynVTf0bG8F-IsM1"
+
+
