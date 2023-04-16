@@ -33,7 +33,7 @@ export class DbService extends PrismaService {
         // @ts-ignore
         this.prismaClientsLocal[modelName][params.action](params.args),
       ]);
-      console.info("results", params.action, params.model, results);
+      // console.info("results", params.action, params.model, results);
       await this.prismaClientsLocal.$disconnect();
       return results;
     });
@@ -41,7 +41,7 @@ export class DbService extends PrismaService {
 
   getCurrentUser() {
     const session: any = RequestContext.currentContext.req;
-    console.log("session", session);
+    // console.log("session", session);
     return session.user;
   }
 }

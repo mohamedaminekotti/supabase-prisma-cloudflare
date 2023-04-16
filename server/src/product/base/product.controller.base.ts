@@ -89,6 +89,8 @@ export class ProductControllerBase {
         price: true,
       },
     });
+    console.log('----------test-----------',test);
+    return test;
   }
 
   @common.UseInterceptors(nestMorgan.MorganInterceptor("combined"))
@@ -162,6 +164,7 @@ export class ProductControllerBase {
       possession: "any",
       resource: "Product",
     });
+
     const results = await this.service.findMany({
       ...args,
       select: {
@@ -173,6 +176,7 @@ export class ProductControllerBase {
         price: true,
       },
     });
+
     const result = results.paginatedResult.map((result: Product) =>
       permission.filter(result)
     );
