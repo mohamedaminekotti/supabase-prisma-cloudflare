@@ -78,7 +78,7 @@ export class ProductControllerBase {
     // }
     const prismaClient = new PrismaClient();
 
-    return await prismaClient.product.create({
+    const test =  await prismaClient.product.create({
       data: data,
       select: {
         id: true,
